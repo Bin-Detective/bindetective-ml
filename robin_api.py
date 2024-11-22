@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 app = FastAPI()
-model = load_model('robin_resnet50') #use the robin tensorflow format
+model = load_model('robin_resnet50') #use the robin tensorflow format (model can be found here https://www.kaggle.com/models/bahiskaraananda/robin-resnet50/tensorFlow2)
 
 class_labels = [
     "buah_sayuran",
