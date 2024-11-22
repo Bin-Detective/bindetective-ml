@@ -7,16 +7,13 @@ Robin is a model developed for waste classification, categorizing items into 10 
 ---
 
 ## **Available Models**
-Each model branch contains:
-- Training and validation details.  
-- Documentation.
--  The trained model file (if available) as a zipped file containing formats such as `.h5`, `.savedmodel`, `.keras`.
+Each model branch contains `model information`, `documentation`, `training and validation details`.
 
-| **Model**         | **Branch Link**                                       |
-|--------------------|------------------------------------------------------|
-| **EfficientNetV2S**| [main-efficientnetv2s](https://github.com/Bin-Detective/bindetective-ml/tree/main-efficientnetv2s) |
-| **EfficientNetB0** | [efficientnetb0](https://github.com/Bin-Detective/bindetective-ml/tree/efficientnetb0)     |
-| **ResNet50**       | [mango-resnet50](https://github.com/Bin-Detective/bindetective-ml/tree/mango-resnet50)           |
+| **Variant**         | **Branch**                                       | **Model**                                                                                 |
+|-------------------|-------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **EfficientNetV2S**| [main-efficientnetv2s](https://github.com/Bin-Detective/bindetective-ml/tree/main-efficientnetv2s) | [Kaggle](https://www.kaggle.com/models/bahiskaraananda/robin-efficientnetv2s)   |
+| **EfficientNetB0** | [efficientnetb0](https://github.com/Bin-Detective/bindetective-ml/tree/efficientnetb0)             | |
+| **ResNet50**       | [mango-resnet50](https://github.com/Bin-Detective/bindetective-ml/tree/mango-resnet50)             | [Kaggle](https://www.kaggle.com/models/bahiskaraananda/robin-resnet50)                 |
 
 
 ## Classes
