@@ -1,6 +1,10 @@
+
 # `Robin` BinDetective Waste Classification Model
 
-Robin is a fine-tuned ResNet50 model developed for waste classification, categorizing items into 10 distinct classes.
+
+Robin is a model developed for waste classification, categorizing items into 10 distinct classes. The model has been fine-tuned using different architectures to find the best and optimal performance. Below, you’ll find links to specific branches for each model variant.
+
+---
 
 ## Classes
 1. buah_sayuran (Fruits/Vegetables): `Fruit/vegetable waste, peels, seeds`
@@ -34,11 +38,11 @@ Total Parameters: 23,608,202 (90.06 MB)
 Trainable Parameters: 14,996,490 (57.21 MB)
 Non-Trainable Parameters: 8,611,712 (32.85 MB)
 ```
-- <a href='https://www.kaggle.com/models/bahiskaraananda/robin-resnet50' target='_blank'>robin-model</a>
-- <a href='https://github.com/Bin-Detective/bindetective-ml/blob/main/robin-resnet50-finetuned.ipynb' target='_blank'>training-documentation</a>
+- <a href='https://www.kaggle.com/models/bahiskaraananda/robin-resnet50' target='_blank'>robin-resnet50-model</a>
+- <a href='https://github.com/Bin-Detective/bindetective-ml/blob/main/robin-resnet50-finetuned.ipynb' target='_blank'>robin-resnet50-training-documentation</a>
 
-## Current Performance
-The current model test accuracy and performance metrics for each class are as follows:
+## Performance
+The current `robin_resnet50` test accuracy and performance metrics for each class are as follows:
 ```bash
               precision    recall  f1-score   support
 buah_sayuran       0.89      0.89      0.89       301
