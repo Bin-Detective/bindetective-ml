@@ -25,10 +25,16 @@ Split ratio `70/20/10`
 
 ## Model
 - Base model: `ResNet50 (pretrained on ImageNet)`
+- Frozen Layers: `Initial layers up to block 143 (conv5_block1_1_conv)`
 - Custom layers: `Global Average Pooling, Dropout (0.5), Dense (10 classes, softmax)`
 - Input size: `224,224,3`
 - Optimizer: `Adam`
 - Loss: `Categorical Crossentropy`
+```bash
+Total Parameters: 23,608,202 (90.06 MB)
+Trainable Parameters: 14,996,490 (57.21 MB)
+Non-Trainable Parameters: 8,611,712 (32.85 MB)
+```
 - <a href='https://www.kaggle.com/datasets/bahiskaraananda/robin-resnet50' target='_blank'>robin-model</a>
 - <a href='https://github.com/Bin-Detective/bindetective-ml/blob/main/robin-resnet50-finetuned.ipynb' target='_blank'>training-documentation</a>
 
