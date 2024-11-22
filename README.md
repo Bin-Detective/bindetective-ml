@@ -1,6 +1,5 @@
 # `Robin` BinDetective Waste Classification Model
 
-## Overview
 Robin is a fine-tuned ResNet50 model developed for waste classification, categorizing items into 10 distinct classes.
 
 ## Classes
@@ -16,7 +15,7 @@ Robin is a fine-tuned ResNet50 model developed for waste classification, categor
 10. tekstil (Textile): `Clothes, fabric`
 
 ## Datasets
-Split ratio `70/20/10`
+Split ratio `70/20/10` from 30000 images
 - Training: `20990 images`
 - Validation: `6000 images`
 - Test: `3010 images`
