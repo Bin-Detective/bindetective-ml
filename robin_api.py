@@ -3,21 +3,27 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 
-app = FastAPI()
-model = load_model('robin_resnet50') #use the robin tensorflow format (model can be found here https://www.kaggle.com/models/bahiskaraananda/robin-resnet50/tensorFlow2)
+ORGANIK = "organik"
+ANORGANIK = "anorganik"
+B3 = "B3"
 
-class_labels = [
-    "buah_sayuran",
-    "daun",
-    "elektronik",
-    "kaca",
-    "kertas",
-    "logam",
-    "makanan",
-    "medis",
-    "plastik",
-    "tekstil"
-]
+class_labels_with_types = {
+    "buah_sayuran": ORGANIK,
+    "daun": ORGANIK,
+    "elektronik": B3,
+    "kaca": ANORGANIK,
+    "kertas": ANORGANIK,
+    "logam": ANORGANIK,
+    "makanan": ORGANIK,
+    "medis": B3,
+    "plastik": ANORGANIK,
+    "tekstil": ANORGANIK,
+}
+
+class_labels = list(class_labels_with_types.keys())
+
+app = FastAPI()
+model = load_model('robin_resnet50')  #use tensorflow format (model can be found here https://www.kaggle.com/models/bahiskaraananda/robin-resnet50/tensorFlow2)
 
 @app.post('/predict')
 async def predict(file: UploadFile = File(...)):
@@ -30,6 +36,7 @@ async def predict(file: UploadFile = File(...)):
     Returns:
     - A dictionary containing:
         - predicted_class: The class label with the highest probability.
+        - waste_type: The type of waste (organik, anorganik, B3).
         - probabilities: A list of probabilities for all classes.
     """
 
@@ -39,17 +46,22 @@ async def predict(file: UploadFile = File(...)):
     prediction = model.predict(image_array)
     predicted_index = np.argmax(prediction[0])
     predicted_class = class_labels[predicted_index]
+    waste_type = class_labels_with_types[predicted_class]
 
     return {
         "predicted_class": predicted_class,
-        "probabilities": {class_labels[i]: float(prob) for i, prob in enumerate(prediction[0])}
+        "waste_type": waste_type,
+        "probabilities": {
+            class_labels[i]: float(prob) for i, prob in enumerate(prediction[0])
+        }
     }
 
 """
-The prediction will return a JSON response like this:
+The prediction will now return a JSON response like this:
 
 {
     "predicted_class": "plastik",
+    "waste_type": "anorganik",
     "probabilities": {
         "buah_sayuran": 0.02,
         "daun": 0.03,
