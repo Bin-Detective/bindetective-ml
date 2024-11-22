@@ -29,7 +29,6 @@ Split ratio `70/20/10` from 30000 images
 - Input size: `224,224,3`
 - Optimizer: `Adam`
 - Loss: `Categorical Crossentropy`
-```bash
 
 ## Requirements
 - TensorFlow `2.15`
