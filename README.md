@@ -29,14 +29,32 @@ Each model branch contains `model information`, `documentation`, `training and v
 10. tekstil (Textile): `Clothes, fabric`
 
 ## Datasets
-Split ratio `70/20/10` from 30000 images
+```bash
+robin-base/
+├── train/
+│   ├── buah_sayuran/
+│   ├── daun/
+│   ├── elektronik/
+│   └── ...
+├── val/
+│   ├── buah_sayuran/
+│   ├── daun/
+│   ├── elektronik/
+│   └── ...
+└── test/
+    ├── buah_sayuran/
+    ├── daun/
+    ├── elektronik/
+    └── ...
+```
+The dataset is balanced with a 1:1 ratio for each class and split into `70/20/10` for training, validation, and testing, consisting of 30,000 images in total.
 - Training: `20990 images`
 - Validation: `6000 images`
 - Test: `3010 images`
 - <a href='https://www.kaggle.com/datasets/bahiskaraananda/robin-base' target='_blank'>robin-datasets</a>
 - <a href='https://github.com/Bin-Detective/bindetective-ml/blob/main/robin-lite-dataset-preparation.ipynb/' target='_blank'>preprocessing-documentation</a>
 
-## Model
+## Model Details
 - Base model: `EfficientNetV2S (pretrained on ImageNet)`
 - Frozen Layers: `Initial layers up to block 143 (block4f_bn)`
 - Custom layers: `Global Average Pooling, Dropout (0.5), Dense (10 classes, softmax)`
@@ -76,6 +94,45 @@ Confusion matrix:
 
 ## Requirements
 - TensorFlow `2.15`
-- Python `3.11+`
+- Python `3.x`
 - Keras
 - NumPy
+
+## Workflow
+Here’s a simple explanation of the workflow for the Robin model:
+```plaintext
++-------------------+        +-----------------------------+        +-----------------------------+
+| Collect Dataset   | -----> | Preprocess Dataset          | -----> | Model Development           |
+| (30000+ images)   |        | - Resize images to 224x224  |        | - Select base architecture  |
++-------------------+        | - Normalize pixel values    |        | - Load pretrained weights   |
+                             | - Balance each dataset      |        | - Freeze initial layers     |
+                             |   class (1:1)               |        | - Add custom layers         |
+                             | - Split into Train/Val/Test |        | - Compile with optimizer    |
+                             |   (70/20/10 ratio)          |        |   and loss function         |
+                             +-----------------------------+        +-----------------------------+
+                                                                                    |
+                                                                                    v
+                             +-----------------------------+        +------------------------------+
+                             | Model Evaluation            | <----- | Model Training               |
+                             | - Test on 10% dataset       |        | - Train on 70% dataset       |
+                             | - Generate performance      |        | - Validate on 20% dataset    |
+                             |   metrics                   |        | - Fine-tune                  |
+                             +-----------------------------+        | - Save best-performing model |
+                                             |                      +------------------------------+
+                                             v
+                             +--------------------------------+
+                             | Troubleshoot                   |
+                             | - Adjust hyperparameters       |
+                             | - Fine-tune and analyze        |
+                             |   performance for improvements |
+                             +--------------------------------+
+                                             |
+                                             v
+                             +----------------------------------+
+                             | Deploy the Model                 |
+                             | - Save the model in TensorFlow   |
+                             |   SavedModel format              |
+                             | - Deploy the model using FastAPI |
+                             |   for waste classification       |
+                             +----------------------------------+
+```
