@@ -67,7 +67,7 @@ Trainable params: 18468850 (70.45 MB)
 Non-trainable params: 1875320 (7.15 MB)
 ```
 - <a href='https://www.kaggle.com/models/bahiskaraananda/robin-efficientnetv2s' target='_blank'>robin-efficientnetv2s-model</a>
-- <a href='https://github.com/Bin-Detective/bindetective-ml/blob/main-efficientnetv2s/robin-efficientnetv2s-finetuned.ipynb' target='_blank'>robin-efficientnetv2s-training-documentation</a>
+- <a href='https://github.com/Bin-Detective/bindetective-ml/blob/main-efficientnetv2s/notebook/robin-efficientnetv2s-finetuned.ipynb' target='_blank'>robin-efficientnetv2s-training-documentation</a>
 
 ## Performance
 The current `robin_efficientnetv2s` test accuracy and performance metrics for each class are as follows:
